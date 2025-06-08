@@ -5,9 +5,18 @@ using std::string;
 
 class Video {
 private:
-    int id;
+    string id;
     string nombre;
     float duracion;
     string genero;
-    int calificacion;
+    float calificacion;
+public:
+    Video();
+
+    void setId(string newId);
+    void setNombre(string newNombre);
+    void setDuracion(float newDuracion);
+    void setGenero(string newGenero);
+    void setCalificacion(float newCalificacion);
+    virtual void printData();
 };
