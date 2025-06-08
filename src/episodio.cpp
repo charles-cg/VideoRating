@@ -12,7 +12,7 @@ void Episodio::setNumeroTemporada(int newNumeroTemporada) {
 }
 
 void Episodio::printData() {
-    cout << "Video: ";
+    cout << "Episodio: ";
 	cout << "ID: " << getId();
 	cout << "Nombre: " << getNombre();
 	cout << "Duracion: " << getDuracion();
