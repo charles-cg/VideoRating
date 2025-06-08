@@ -1,10 +1,14 @@
 #include <iostream>
 #include "video.h"
 
+using namespace std;
+
 Video::Video() {
     duracion = 0;
+    calificacion = 0;
 }
 
+//metodos set
 void Video::setId(string newId) {
     id = newId;
 }
@@ -25,6 +29,28 @@ void Video::setCalificacion(float newCalificacion) {
     calificacion = newCalificacion; //reviasar despues ya que buscamos el promedio
 }
 
-void Video::printData() {
+//metodos get
+string Video::getId() {
+    return id;
+}
 
+string Video::getNombre() {
+    return nombre;
+}
+float Video::getDuracion() {
+    return duracion;
+}
+string Video::getGenero() {
+    return genero;
+}
+
+float Video::getCalificacion() { //revisar ya que se necesita un promedio
+    return calificacion;
+}
+void Video::printData() {
+    cout << "Video: ";
+	cout << "ID: " << id;
+	cout << "Nombre: " << nombre;
+	cout << "Duracion: " << duracion;
+	cout << "Genero: " << genero << endl;
 }

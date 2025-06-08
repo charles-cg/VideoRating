@@ -18,5 +18,12 @@ public:
     void setDuracion(float newDuracion);
     void setGenero(string newGenero);
     void setCalificacion(float newCalificacion);
+
+    string getId();
+    string getNombre();
+    float getDuracion();
+    string getGenero();
+    float getCalificacion();
+    
     virtual void printData();
 };
