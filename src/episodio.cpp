@@ -3,6 +3,10 @@
 
 using namespace std;
 
+Episodio::Episodio() {
+    numeroTemporada = 0;
+}
+
 void Episodio::setNumeroEpisodio(string newNombreEpisodio) {
     nombreEpisodio = newNombreEpisodio;
 }
