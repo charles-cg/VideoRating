@@ -2,10 +2,10 @@
 
 class Menu {
 private:
-    int option;
+    int opcion;
 public:
     Menu();
-    void displayMenu();
-    bool selectOption();
+    void generarMenu();
+    bool seleccionarOpcion();
     ~Menu();
 };

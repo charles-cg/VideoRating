@@ -9,7 +9,7 @@ Menu::~Menu() {
 
 }
 
-void Menu::displayMenu() {
+void Menu::generarMenu() {
     std::cout << "Menu:\n1. Cargar archivo de datos\n2. Mostrar todos los datos\n";
     std::cout << "3. Mostrar los video en general con una cierta calificacion o un cierto genero\n";
     std::cout << "4. Mostrar los episodios de una determinada serie con una calificacion determinada\n";
@@ -18,11 +18,11 @@ void Menu::displayMenu() {
     std::cout << "0. Salir\n";
 }
 
-bool Menu::selectOption() {
-    std::cout << "Elige una opcion: ";
-    std::cin >> option;
+bool Menu::seleccionarOpcion() {
+    std::cout << "Elige una opcion: "; //checar si es mejor input en el main o en la función
+    std::cin >> opcion;
 
-    switch (option) {
+    switch (opcion) {
         case 1:
 
             return true;

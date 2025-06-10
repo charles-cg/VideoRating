@@ -34,7 +34,7 @@ void Video::setGenero(string newGenero) {
 void Video::setCalificacion(float newCalificacion) {
     numeroCalificaciones++;
     sumaCalificacion += newCalificacion;
-    calificacion = sumaCalificacion / numeroCalificaciones; //reviasar despues ya que buscamos el promedio
+    calificacion = sumaCalificacion / numeroCalificaciones;
 }
 
 //metodos get
@@ -55,6 +55,8 @@ string Video::getGenero() {
 float Video::getCalificacion() { //revisar ya que se necesita un promedio
     return calificacion;
 }
+
+//
 void Video::printData() {
     cout << "Video: ";
 	cout << "ID: " << id;
