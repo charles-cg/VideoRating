@@ -60,11 +60,12 @@ bool loadPeliculas(string filename, unsigned int arraySIze) {
 					newPeli.setGenero(cell);
 					break;
 				case 4:
-					newPeli.setDuracion();
+					newPeli.setDuracion(/*Preguntar*/);
 				default:
 					errores++;
 					break;
 				}
+			campo++;
 			}
 		}
 
