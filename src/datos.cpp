@@ -1,28 +1,11 @@
 #include <iostream>
-#include "pelicula.h"
+#include "datos.h"
 #include <fstream>
 #include <sstream>
 
 using namespace std;
 
-Pelicula::Pelicula() {
-
-}
-
-Pelicula::~Pelicula() {
-    
-}
-
-void Pelicula::printData() {
-    cout << "Pelicula: ";
-	cout << "ID: " << getId();
-	cout << "Nombre: " << getNombre();
-	cout << "Duracion: " << getDuracion();
-	cout << "Genero: " << getGenero();
-    cout << "Calificacion: " << getCalificacion();
-}
-
-bool loadPeliculas(string filename, unsigned int arraySIze) {
+bool Datos::loadPeliculaCSV(string filename, unsigned int arraySIze) {
 	ifstream file(filename);
 	string line;
 	unsigned int size = 0;
