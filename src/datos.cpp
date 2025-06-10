@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool Datos::loadPeliculaCSV(string filename, unsigned int arraySIze) {
+bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
 	ifstream file(filename);
 	string line;
 	unsigned int size = 0;
@@ -43,13 +43,46 @@ bool Datos::loadPeliculaCSV(string filename, unsigned int arraySIze) {
 					newPeli.setGenero(cell);
 					break;
 				case 4:
-					newPeli.setDuracion();
+					newPeli.setDuracion(stod(cell));
 				default:
 					errores++;
 					break;
 				}
+			campo++;
 			}
+		if (errores || campo != PELICULA_ATTRIB_SIZE){
+			cout << "Error en la linea: " << line << endl;
+			file.close();
+			return false;
 		}
-
+		if(size < arraySize) {
+			peliculaArray[size] = newPeli;
+			size++;
+		}
+		else {
+			cout << "Error, el arreglo es muy pequeño" << endl;
+			file.close();
+			return false;
+		}
 	}
+	file.close();
+	return true;
+}
+
+int Datos::readPeliculaLines(string filename) {
+	ifstream file(filename);
+	int lineCount = 0;
+	string line;
+
+	if (!file.is_open()) {
+		cout << "No se pudo abrir el archivo: " << filename <<endl;
+		return 0;
+	}
+	while (!getline (file, line)) {
+		cout << "EL arhcivo no tiene header" << endl;
+		file.close();
+		return 0;
+	}
+	file.close();
+	return lineCount;
 }
