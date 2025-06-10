@@ -15,4 +15,5 @@ add_executable(VideoRating2
         src/pelicula.cpp
         src/pelicula.h
         src/video.cpp
-        src/video.h)
+        src/video.h
+        src/datos.cpp)
