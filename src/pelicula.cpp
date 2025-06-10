@@ -65,8 +65,40 @@ bool loadPeliculas(string filename, unsigned int arraySIze) {
 					errores++;
 					break;
 				}
+			campo++;
 			}
+		if (errores || campo != /*CONSTANTE*/){
+			cout << "Error en la linea: " << line << endl;
+			file.close();
+			return false;
 		}
-
+		if(size < arraySize) {
+			partArray[size] = newPeli;
+			size++;
+		}
+		else {
+			cout << "Error, el arreglo es muy pequeño" << endl;
+			file.close();
+			return false;
+		}
 	}
+	file.close();
+	return true;
+}
+int readPeliculasLines(string filename) {
+	ifstream file(filename);
+	int lineCount = 0;
+	string line;
+
+	if (!file.is_open()) {
+		cout << "No se pudo abrir el archivo: " << filename <<endl;
+		return 0;
+	}
+	while (!getline (file, line)) {
+		cout << "EL arhcivo no tiene header" << endl;
+		file.close();
+		return 0;
+	}
+	file.close();
+	return lineCount;
 }
