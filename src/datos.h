@@ -11,8 +11,12 @@ public:
     int readLines(std::string filename);
     bool loadEpisodioCSV(std::string filename, unsigned int arraySize);
     bool loadVideosCSV(std::string filename, unsigned int arraySize);
+    bool revisionErroresPelicula(string filename);
+    bool revisionErroresEpisodio(string filename);
 private:
     Episodio *episodioArray;
     Pelicula *peliculaArray;
     Video *videoArray;
+    int dataSizePelicula;
+    int dataSizeEpisodio;
 };

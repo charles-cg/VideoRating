@@ -5,6 +5,55 @@
 
 using namespace std;
 
+Datos::Datos() {
+	episodioArray = nullptr;
+	peliculaArray = nullptr;
+	dataSizeEpisodio = 0;
+	dataSizePelicula = 0;
+}
+
+bool Datos::revisionErroresPelicula(string filename) {
+	dataSizePelicula = readLines(filename);
+	if(dataSizePelicula == -1) {
+		cerr << "No se pudo cargar el data set desde " << filename << "\n";
+		return 0;
+	}
+
+	cout << "El archivo \"" << filename << "\" tiene: " << dataSizePelicula << " entradas\n";
+	peliculaArray = new(nothrow) Pelicula [dataSizePelicula];
+	if(peliculaArray == nullptr) {
+		cerr << "No hubo memoria para el arreglo creado con datos de " << filename << "\n";
+		return 0;
+	}
+
+	if(!loadPeliculaCSV(filename, dataSizePelicula)) {
+		cerr << "Error al cargar el data set de " << filename << "\n";
+		delete [] peliculaArray;
+		return 0;
+	}
+}
+
+bool Datos::revisionErroresEpisodio(string filename) {
+	dataSizeEpisodio = readLines(filename);
+	if(dataSizeEpisodio == -1) {
+		cerr << "No se pudo cargar el data set desde " << filename << "\n";
+		return 0;
+	}
+
+	cout << "El archivo \"" << filename << "\" tiene: " << dataSizeEpisodio << " entradas\n";
+	episodioArray = new(nothrow) Episodio [dataSizeEpisodio];
+	if(peliculaArray == nullptr) {
+		cerr << "No hubo memoria para el arreglo creado con datos de " << filename << "\n";
+		return 0;
+	}
+
+	if(!loadPeliculaCSV(filename, dataSizeEpisodio)) {
+		cerr << "Error al cargar el data set de " << filename << "\n";
+		delete [] episodioArray;
+		return 0;
+	}
+}
+
 bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
 	ifstream file(filename);
 	string line;
