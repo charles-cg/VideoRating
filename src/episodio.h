@@ -7,6 +7,8 @@ private:
     int numeroTemporada;
 public:
     Episodio();
+    ~Episodio();
+    
     void setNumeroEpisodio(string newNombreEpisodio);
     void setNumeroTemporada(int newNumeroTemporada);
     void printData() override;

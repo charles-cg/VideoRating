@@ -12,6 +12,7 @@ private:
     float calificacion;
 public:
     Video();
+    ~Video();
 
     void setId(string newId);
     void setNombre(string newNombre);

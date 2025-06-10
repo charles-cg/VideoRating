@@ -7,6 +7,10 @@ Episodio::Episodio() {
     numeroTemporada = 0;
 }
 
+Episodio::~Episodio() {
+
+}
+
 void Episodio::setNumeroEpisodio(string newNombreEpisodio) {
     nombreEpisodio = newNombreEpisodio;
 }
@@ -22,5 +26,6 @@ void Episodio::printData() {
 	cout << "Duracion: " << getDuracion();
 	cout << "Genero: " << getGenero();
 	cout << "Titulo: " << nombreEpisodio;
-	cout << "Temporada: " << numeroTemporada << endl;   
+	cout << "Temporada: " << numeroTemporada; 
+	cout << "Calificacion: " << getCalificacion() << endl;  
 }

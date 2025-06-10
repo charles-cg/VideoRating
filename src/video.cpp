@@ -8,6 +8,10 @@ Video::Video() {
     calificacion = 0;
 }
 
+Video::~Video() {
+    
+}
+
 //metodos set
 void Video::setId(string newId) {
     id = newId;
