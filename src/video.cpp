@@ -6,6 +6,8 @@ using namespace std;
 Video::Video() {
     duracion = 0;
     calificacion = 0;
+    numeroCalificaciones = 0;
+    sumaCalificacion = 0;
 }
 
 Video::~Video() {
@@ -30,7 +32,9 @@ void Video::setGenero(string newGenero) {
 }
 
 void Video::setCalificacion(float newCalificacion) {
-    calificacion = newCalificacion; //reviasar despues ya que buscamos el promedio
+    numeroCalificaciones++;
+    sumaCalificacion += newCalificacion;
+    calificacion = sumaCalificacion / numeroCalificaciones; //reviasar despues ya que buscamos el promedio
 }
 
 //metodos get

@@ -10,6 +10,8 @@ private:
     float duracion;
     string genero;
     float calificacion;
+    int sumaCalificacion;
+    int numeroCalificaciones;
 public:
     Video();
     ~Video();
