@@ -69,7 +69,141 @@ bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
 	return true;
 }
 
-int Datos::readPeliculaLines(string filename) {
+bool Datos::loadVideosCSV(string filename, unsigned int arraySize) {
+	ifstream file(filename);
+	string line;
+	unsigned int size = 0;
+
+	if (!file.is_open()) {
+		cout << "No se pudo abrir el archivo: " << filename <<endl;
+		return false;
+	}
+	if (!getline (file, line)) {
+		cout << "El archivo no tiene header" << endl;
+		return false;
+	}
+	cout << "Archivo abierto"<<endl;
+	//Aquí preguntar a Artemio si copiamos parte por parte el código
+	while (getline (file, line)) {
+		Video newVid;
+		stringstream ss(line);
+		string cell;
+		int campo = 0, errores = 0;
+
+		while (getline(ss, cell, ',')) {
+			if (!cell.length())
+				errores++;
+			switch (campo){
+				case 0:
+					newVid.setId(cell);
+					break;
+				case 1:
+					newVid.setNombre(cell);
+					break;
+				case 2:
+					newVid.setCalificacion(stod(cell));
+					break;
+				case 3:
+					newVid.setGenero(cell);
+					break;
+				case 4:
+					newVid.setDuracion(stod(cell));
+				default:
+					errores++;
+					break;
+			}
+			campo++;
+		}
+		if (errores || campo != VIDEO_ATTRIB_SIZE){
+			cout << "Error en la linea: " << line << endl;
+			file.close();
+			return false;
+		}
+		if(size < arraySize) {
+			videoArray[size] = newVid;
+			size++;
+		}
+		else {
+			cout << "Error, el arreglo es muy pequeño" << endl;
+			file.close();
+			return false;
+		}
+	}
+	file.close();
+	return true;
+}
+
+bool Datos::loadEpisodioCSV(string filename, unsigned int arraySize) {
+	ifstream file(filename);
+	string line;
+	unsigned int size = 0;
+
+	if (!file.is_open()) {
+		cout << "No se pudo abrir el archivo: " << filename <<endl;
+		return false;
+	}
+	if (!getline (file, line)) {
+		cout << "El archivo no tiene header" << endl;
+		return false;
+	}
+	cout << "Archivo abierto"<<endl;
+	//Aquí preguntar a Artemio si copiamos parte por parte el código
+	while (getline (file, line)) {
+		Episodio newEpi;
+		stringstream ss(line);
+		string cell;
+		int campo = 0, errores = 0;
+
+		while (getline(ss, cell, ',')) {
+			if (!cell.length())
+				errores++;
+			switch (campo){
+				case 0:
+					newEpi.setId(cell);
+					break;
+				case 1:
+					newEpi.setNombre(cell);
+					break;
+				case 2:
+					newEpi.setCalificacion(stod(cell));
+					break;
+				case 3:
+					newEpi.setGenero(cell);
+					break;
+				case 4:
+					newEpi.setDuracion(stod(cell));
+					break;
+				case 5:
+					newEpi.setNumeroEpisodio(cell);
+					break;
+				case 6:
+					newEpi.setNumeroTemporada(stod(cell));
+				default:
+					errores++;
+					break;
+			}
+			campo++;
+		}
+		if (errores || campo != EPISODIO_ATTRIB_SIZE){
+			cout << "Error en la linea: " << line << endl;
+			file.close();
+			return false;
+		}
+		if(size < arraySize) {
+			episodioArray[size] = newEpi;
+			size++;
+		}
+		else {
+			cout << "Error, el arreglo es muy pequeño" << endl;
+			file.close();
+			return false;
+		}
+	}
+	file.close();
+	return true;
+}
+
+int Datos::readLines(string filename) {
 	ifstream file(filename);
 	int lineCount = 0;
 	string line;

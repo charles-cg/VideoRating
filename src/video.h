@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#define VIDEO_ATTRIB_SIZE 5
 
 using std::string;
 
