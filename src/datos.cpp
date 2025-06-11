@@ -100,7 +100,7 @@ bool Datos::loadPeliculaCSV(string filename) {
 			file.close();
 			return false;
 		}
-		if(size < arraySize) {
+		if(size < numeroPeliculas) {
 			videoArray[size] = newPeli;
 			size++;
 		}
