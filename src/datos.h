@@ -13,6 +13,8 @@ public:
     bool loadVideosCSV(std::string filename, unsigned int arraySize);
     bool revisionErroresPelicula(string filename);
     bool revisionErroresEpisodio(string filename);
+    Episodio *getEpisodioArray();
+    Pelicula *getPeliculaArray();
 private:
     Episodio *episodioArray;
     Pelicula *peliculaArray;

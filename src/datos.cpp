@@ -12,6 +12,14 @@ Datos::Datos() {
 	dataSizePelicula = 0;
 }
 
+Episodio *Datos::getEpisodioArray() {
+	return episodioArray;
+}
+
+Pelicula *Datos::getPeliculaArray() {
+	return peliculaArray;
+}
+
 bool Datos::revisionErroresPelicula(string filename) {
 	dataSizePelicula = readLines(filename);
 	if(dataSizePelicula == -1) {
@@ -31,6 +39,7 @@ bool Datos::revisionErroresPelicula(string filename) {
 		delete [] peliculaArray;
 		return 0;
 	}
+	return 1;
 }
 
 bool Datos::revisionErroresEpisodio(string filename) {
@@ -52,6 +61,7 @@ bool Datos::revisionErroresEpisodio(string filename) {
 		delete [] episodioArray;
 		return 0;
 	}
+	return 1;
 }
 
 bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
