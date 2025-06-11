@@ -1,51 +1,50 @@
 ID,Nombre,Duracion,Genero,Episodio_Titulo,Temporada
-S1,Serie 1,50,Drama,Episodio 1,1
-S1,Serie 1,50,Drama,Episodio 2,1
-S1,Serie 1,50,Drama,Episodio 3,1
-S1,Serie 1,50,Drama,Episodio 4,1
-S1,Serie 1,50,Drama,Episodio 5,1
-S2,Serie 2,45,Accion,Episodio 1,1
-S2,Serie 2,45,Accion,Episodio 2,1
-S2,Serie 2,45,Accion,Episodio 3,1
-S2,Serie 2,45,Accion,Episodio 4,1
-S2,Serie 2,45,Accion,Episodio 5,1
-S3,Serie 3,60,Misterio,Episodio 1,1
-S3,Serie 3,60,Misterio,Episodio 2,1
-S3,Serie 3,60,Misterio,Episodio 3,1
-S3,Serie 3,60,Misterio,Episodio 4,1
-S3,Serie 3,60,Misterio,Episodio 5,1
-S4,Serie 4,40,Drama,Episodio 1,1
-S4,Serie 4,40,Drama,Episodio 2,1
-S4,Serie 4,40,Drama,Episodio 3,1
-S4,Serie 4,40,Drama,Episodio 4,1
-S4,Serie 4,40,Drama,Episodio 5,1
-S5,Serie 5,55,Accion,Episodio 1,1
-S5,Serie 5,55,Accion,Episodio 2,1
-S5,Serie 5,55,Accion,Episodio 3,1
-S5,Serie 5,55,Accion,Episodio 4,1
-S5,Serie 5,55,Accion,Episodio 5,1
-S6,Serie 6,50,Misterio,Episodio 1,1
-S6,Serie 6,50,Misterio,Episodio 2,1
-S6,Serie 6,50,Misterio,Episodio 3,1
-S6,Serie 6,50,Misterio,Episodio 4,1
-S6,Serie 6,50,Misterio,Episodio 5,1
-S7,Serie 7,45,Drama,Episodio 1,1
-S7,Serie 7,45,Drama,Episodio 2,1
-S7,Serie 7,45,Drama,Episodio 3,1
-S7,Serie 7,45,Drama,Episodio 4,1
-S7,Serie 7,45,Drama,Episodio 5,1
-S8,Serie 8,60,Accion,Episodio 1,1
-S8,Serie 8,60,Accion,Episodio 2,1
-S8,Serie 8,60,Accion,Episodio 3,1
-S8,Serie 8,60,Accion,Episodio 4,1
-S8,Serie 8,60,Accion,Episodio 5,1
-S9,Serie 9,55,Misterio,Episodio 1,1
-S9,Serie 9,55,Misterio,Episodio 2,1
-S9,Serie 9,55,Misterio,Episodio 3,1
-S9,Serie 9,55,Misterio,Episodio 4,1
-S9,Serie 9,55,Misterio,Episodio 5,1
-S10,Serie 10,40,Drama,Episodio 1,1
-S10,Serie 10,40,Drama,Episodio 2,1
-S10,Serie 10,40,Drama,Episodio 3,1
-S10,Serie 10,40,Drama,Episodio 4,1
-S10,Serie 10,40,Drama,Episodio 5,1
+S1_1,Serie_1,50,Drama,Episodio 1,1
+S1_2,Serie_1,50,Drama,Episodio 2,1
+S1_3,Serie_1,50,Drama,Episodio 4,1
+S1_5,Serie_1,50,Drama,Episodio 5,1
+S2_1,Serie_2,45,Accion,Episodio 1,1
+S2_2,Serie_2,45,Accion,Episodio 2,1
+S2_3,Serie_2,45,Accion,Episodio 3,1
+S2_4,Serie_2,45,Accion,Episodio 4,1
+S2_5,Serie_2,45,Accion,Episodio 5,1
+S3_1,Serie_3,60,Misterio,Episodio 1,1
+S3_2,Serie_3,60,Misterio,Episodio 2,1
+S3_3,Serie_3,60,Misterio,Episodio 3,1
+S3_4,Serie_3,60,Misterio,Episodio 4,1
+S3_5,Serie_3,60,Misterio,Episodio 5,1
+S4_1,Serie_4,40,Drama,Episodio 1,1
+S4_2,Serie_4,40,Drama,Episodio 2,1
+S4_3,Serie_4,40,Drama,Episodio 3,1
+S4_4,Serie_4,40,Drama,Episodio 4,1
+S4_5,Serie_4,40,Drama,Episodio 5,1
+S5_1,Serie_5,55,Accion,Episodio 1,1
+S5_2,Serie_5,55,Accion,Episodio 2,1
+S5_3,Serie_5,55,Accion,Episodio 3,1
+S5_4,Serie_5,55,Accion,Episodio 4,1
+S5_5,Serie_5,55,Accion,Episodio 5,1
+S6_1,Serie_6,50,Misterio,Episodio 1,1
+S6_2,Serie_6,50,Misterio,Episodio 2,1
+S6_3,Serie_6,50,Misterio,Episodio 3,1
+S6_4,Serie_6,50,Misterio,Episodio 4,1
+S6_5,Serie_6,50,Misterio,Episodio 5,1
+S7_1,Serie_7,45,Drama,Episodio 1,1
+S7_2,Serie_7,45,Drama,Episodio 2,1
+S7_3,Serie_7,45,Drama,Episodio 3,1
+S7_4,Serie_7,45,Drama,Episodio 4,1
+S7_5,Serie_7,45,Drama,Episodio 5,1
+S8_1,Serie_8,60,Accion,Episodio 1,1
+S8_2,Serie_8,60,Accion,Episodio 2,1
+S8_3,Serie_8,60,Accion,Episodio 3,1
+S8_4,Serie_8,60,Accion,Episodio 4,1
+S8_5,Serie_8,60,Accion,Episodio 5,1
+S9_1,Serie_9,55,Misterio,Episodio 1,1
+S9_2,Serie_9,55,Misterio,Episodio 2,1
+S9_3,Serie_9,55,Misterio,Episodio 3,1
+S9_4,Serie_9,55,Misterio,Episodio 4,1
+S9_5,Serie_9,55,Misterio,Episodio 5,1
+S10_1,Serie_10,40,Drama,Episodio 1,1
+S10_2,Serie_10,40,Drama,Episodio 2,1
+S10_3,Serie_10,40,Drama,Episodio 3,1
+S10_4,Serie_10,40,Drama,Episodio 4,1
+S10_5,Serie_10,40,Drama,Episodio 5,1

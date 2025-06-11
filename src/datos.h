@@ -22,7 +22,7 @@ public:
     bool buscarVideosGeneral(float searchCalificacion);
 
     //metodo 4
-    bool buscarEpisodios(string searchId, float searchCalificacion);
+    bool buscarEpisodios(string searchNombre, float searchCalificacion);
 
     //metodo5
     bool buscarPeliculas(float searchCalificacion);

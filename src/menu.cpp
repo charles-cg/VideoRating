@@ -44,17 +44,17 @@ bool Menu::seleccionarOpcion(Datos *newData) {
             std::cin >> optGeneroCalificacion;
 
             if (optGeneroCalificacion == 1) {
-                float searchCalificacion;
+                string searchGenero;
             
                 newData->displayDatos();
 
                 std::cout << "Por favor ingrese el genero a buscar" << std::endl;
-                std::cin >> searchCalificacion;
+                std::cin >> searchGenero;
             
-                if(newData->buscarVideosGeneral(searchCalificacion)) {
+                if(newData->buscarVideosGeneral(searchGenero)) {
                     return true;
                 } else {
-                    std::cout << "No hubo peliculas con calificacion"<< searchCalificacion << std::endl;
+                    std::cout << "No hubo videos con genero "<< searchGenero << std::endl;
                     return true;
                 }
             } else if (optGeneroCalificacion == 2) {
@@ -72,7 +72,7 @@ bool Menu::seleccionarOpcion(Datos *newData) {
                     if(newData->buscarVideosGeneral(searchCalificacion)) {
                         return true;
                     } else {
-                        std::cout << "No hubo videos con calificacion"<< searchCalificacion << std::endl;
+                        std::cout << "No hubo videos con calificacion "<< searchCalificacion << std::endl;
                             return true;
                     }
                 } 
@@ -83,13 +83,13 @@ bool Menu::seleccionarOpcion(Datos *newData) {
         }
 
         case 4: {
-            string searchId;
+            string searchNombre;
             float searchCalificacion;
             
             newData->displayDatos();
 
-            std::cout << "\nIngrese el ID de la serie a buscar: " << std::endl;
-            std::cin >> searchId;
+            std::cout << "\nIngrese el Nombre de la serie a buscar: " << std::endl;
+            std::cin >> searchNombre;
 
 
             std::cout << "Por favor ingrese la calificacion a buscar del 1-5" << std::endl;
@@ -99,10 +99,10 @@ bool Menu::seleccionarOpcion(Datos *newData) {
                 std::cout << "La calificacion debe estar entre 1 y 5" << std::endl;
                 return true;
             } else {
-                if(newData->buscarEpisodios(searchId, searchCalificacion)) {
+                if(newData->buscarEpisodios(searchNombre, searchCalificacion)) {
                     return true;
                 } else {
-                        std::cout << "No hubo episodios de la serie "<< searchId <<" con calificacion "<< searchCalificacion << std::endl;
+                        std::cout << "No hubo episodios de la serie "<< searchNombre <<" con calificacion "<< searchCalificacion << std::endl;
                         return true;
                 }
             }    

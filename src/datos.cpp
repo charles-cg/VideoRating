@@ -262,11 +262,11 @@ void Datos::displayDatos() {
     }
 }
 
-bool Datos::buscarEpisodios(string searchId, float searchCalificacion) {
+bool Datos::buscarEpisodios(string searchNombre, float searchCalificacion) {
 	int count = 0;
     for (unsigned int i = 0; i < arraySize; i++) {
         if (videoArray[i] && typeid(*videoArray[i]) == typeid(Episodio)) {
-            if (videoArray[i]->getId() == searchId && videoArray[i]->getCalificacion() == searchCalificacion) {
+            if (videoArray[i]->getNombre() == searchNombre && videoArray[i]->getCalificacion() == searchCalificacion) {
 				videoArray[i]->printData();
 				count++;
 			}
@@ -289,7 +289,6 @@ bool Datos::buscarVideosGeneral(string searchGenero) {
 			count++;
 		}
     }
-
 	if (count == 0) {
 		return false;
 	}
