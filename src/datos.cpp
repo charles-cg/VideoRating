@@ -237,6 +237,24 @@ bool Datos::calificarVideo(string id, int calificacion) {
 	return false;
 }
 
+bool Datos::buscarPeliculas(float searchCalificacion) {
+	int count = 0;
+    for (unsigned int i = 0; i < arraySize; i++) {
+        if (videoArray[i] && typeid(*videoArray[i]) == typeid(Pelicula)) {
+            if (videoArray[i]->getCalificacion() == searchCalificacion) {
+				videoArray[i]->printData();
+				count++;
+			}
+        }
+    }
+
+	if (count == 0) {
+		return false;
+	}
+
+	return true;
+}
+
 //metodos para el menu
 void Datos::displayDatos() {
     for (unsigned int i = 0; i < arraySize; i++) {

@@ -12,13 +12,24 @@ public:
 
     int countLines(std::string filename);
 
+    //metodo 1
     bool cargarDatos();
 
+    //metodo 2
     void displayDatos();
 
+    //metodo 3
+
+
+    //metodo 4
+    bool buscarEpisodios(string searchId, float searchCalificacion);
+
+    //metodo5
+    bool buscarPeliculas(float searchCalificacion);
+
+    //metodo 6
     bool calificarVideo(string id, int calificacion);
     
-    bool buscarEpisodios(string searchId, float searchCalificacion);
 private:
     Video **videoArray;
 
