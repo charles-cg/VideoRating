@@ -12,7 +12,7 @@ Menu::~Menu() {
 
 void Menu::generarMenu() {
     std::cout << "\nMenu:\n1. Cargar archivo de datos\n2. Mostrar todos los datos\n";
-    std::cout << "3. Mostrar los video en general con una cierta calificacion o un cierto genero\n";
+    std::cout << "3. Mostrar los videos en general con una cierta calificacion o un cierto genero\n";
     std::cout << "4. Mostrar los episodios de una determinada serie con una calificacion determinada\n";
     std::cout << "5. Mostrar las peliculas con cierta calificacion\n";
     std::cout << "6. Calificar un video\n";
@@ -33,13 +33,21 @@ bool Menu::seleccionarOpcion(Datos *newData) {
             return true;
 
         case 2:
+            if (newData->checkNullptr()) {
+                std::cout << "No se ha cargado ningun archivo\n";
+                return true;
+            }
             newData->displayDatos();
             return true;
 
         case 3: {
+            if (newData->checkNullptr()) {
+                std::cout << "No se ha cargado ningun archivo\n";
+                return true;
+            }            
             int optGeneroCalificacion;
 
-            std::cout << "Eliga que desea buscar en el catálogo\n1. Genero\n2. Calificacion\nOpcion: ";
+            std::cout << "Eliga que desea buscar en el catalogo\n1. Genero\n2. Calificacion\nOpcion: ";
 
             std::cin >> optGeneroCalificacion;
 
@@ -77,12 +85,16 @@ bool Menu::seleccionarOpcion(Datos *newData) {
                     }
                 } 
             } else {
-                std::cout << "Opción invalida\n";
+                std::cout << "Opcion invalida\n";
                 return true;
             }
         }
 
         case 4: {
+            if (newData->checkNullptr()) {
+                std::cout << "No se ha cargado ningun archivo\n";
+                return true;
+            }
             string searchNombre;
             float searchCalificacion;
             
@@ -109,6 +121,10 @@ bool Menu::seleccionarOpcion(Datos *newData) {
         }
 
         case 5: {
+            if (newData->checkNullptr()) {
+                std::cout << "No se ha cargado ningun archivo\n";
+                return true;
+            }
             float searchCalificacion;
             
             newData->displayDatos();
@@ -130,6 +146,10 @@ bool Menu::seleccionarOpcion(Datos *newData) {
         }
         
         case 6: {
+            if (newData->checkNullptr()) {
+                std::cout << "No se ha cargado ningun archivo\n";
+                return true;
+            }
             int calificacion;
             std::string idEpisodio;
             
@@ -139,16 +159,16 @@ bool Menu::seleccionarOpcion(Datos *newData) {
             std::cin >> idEpisodio;
 
 
-            std::cout << "Por favor ingrese su calificación del 1-5" << std::endl;
+            std::cout << "Por favor ingrese su calificacion del 1-5" << std::endl;
             std::cin >> calificacion;
             
 
             if (calificacion < 1 || calificacion > 5) {
-                std::cout << "La calificación debe estar entre 1 y 5" << std::endl;
+                std::cout << "La calificacion debe estar entre 1 y 5" << std::endl;
                 return true;
             } else {
                 if(newData->calificarVideo(idEpisodio, calificacion)) {
-                    std::cout << "Se asignó la calificación" << std::endl;
+                    std::cout << "Se asigno la calificacion" << std::endl;
                     return true;
                 } else {
                         std::cout << "No se pudo asignar la calificacion"<< std::endl;

@@ -29,6 +29,8 @@ public:
 
     //metodo 6
     bool calificarVideo(string id, int calificacion);
+
+    bool checkNullptr();
     
 private:
     Video **videoArray;

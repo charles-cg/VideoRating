@@ -21,7 +21,12 @@ Datos::~Datos() {
 	}
 }
 
-//get methods
+bool Datos::checkNullptr() {
+	if (!videoArray) {
+		return true;
+	}
+	return false;
+}
 
 //metodo para contar lineas
 int Datos::countLines(string fileName) {
