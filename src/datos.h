@@ -9,8 +9,6 @@ public:
     ~Datos();
 
     //metodos para la carga de datos
-    bool loadPeliculaCSV(std::string filename);
-    bool loadEpisodioCSV(std::string filename);
 
     int countLines(std::string filename);
 
@@ -24,6 +22,9 @@ public:
 private:
     Video **videoArray;
 
+    bool loadPeliculaCSV(std::string filename);
+    
+    bool loadEpisodioCSV(std::string filename);
 
     unsigned int arraySize;
     unsigned int numeroPeliculas;
