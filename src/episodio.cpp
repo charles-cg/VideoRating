@@ -19,6 +19,14 @@ void Episodio::setNumeroTemporada(int newNumeroTemporada) {
     numeroTemporada = newNumeroTemporada;
 }
 
+string Episodio::getNombreEpisodio() {
+	return nombreEpisodio;
+}
+
+int Episodio::getNumeroTemporada() {
+	return numeroTemporada;
+}
+
 void Episodio::printData() {
     cout << "Episodio: ";
 	cout << "ID: " << getId();

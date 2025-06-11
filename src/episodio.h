@@ -13,5 +13,8 @@ public:
     
     void setNombreEpisodio(string newNombreEpisodio);
     void setNumeroTemporada(int newNumeroTemporada);
+
+    string getNombreEpisodio();
+    int getNumeroTemporada();
     void printData() override;
 };
