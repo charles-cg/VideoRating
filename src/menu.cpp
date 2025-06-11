@@ -11,7 +11,7 @@ Menu::~Menu() {
 }
 
 void Menu::generarMenu() {
-    std::cout << "Menu:\n1. Cargar archivo de datos\n2. Mostrar todos los datos\n";
+    std::cout << "\nMenu:\n1. Cargar archivo de datos\n2. Mostrar todos los datos\n";
     std::cout << "3. Mostrar los video en general con una cierta calificacion o un cierto genero\n";
     std::cout << "4. Mostrar los episodios de una determinada serie con una calificacion determinada\n";
     std::cout << "5. Mostrar las peliculas con cierta calificacion\n";
@@ -50,7 +50,7 @@ bool Menu::seleccionarOpcion(Datos *newData) {
 
             return false;
         default:
-        
+            std::cout << "Opcion invalida. Intente de nuevo." << std::endl;
             return true;
     }
 }
