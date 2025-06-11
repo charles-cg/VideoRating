@@ -8,8 +8,6 @@ public:
     Datos();
     ~Datos();
 
-    //metodos para la carga de datos
-
     int countLines(std::string filename);
 
     //metodo 1
@@ -19,7 +17,9 @@ public:
     void displayDatos();
 
     //metodo 3
+    bool buscarVideosGeneral(string searchGenero);
 
+    bool buscarVideosGeneral(float searchCalificacion);
 
     //metodo 4
     bool buscarEpisodios(string searchId, float searchCalificacion);
@@ -33,6 +33,7 @@ public:
 private:
     Video **videoArray;
 
+    //metodos carga de datos
     bool loadPeliculaCSV(std::string filename);
     
     bool loadEpisodioCSV(std::string filename);

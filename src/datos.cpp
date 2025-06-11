@@ -279,3 +279,36 @@ bool Datos::buscarEpisodios(string searchId, float searchCalificacion) {
 
 	return true;
 }
+
+
+bool Datos::buscarVideosGeneral(string searchGenero) {
+	int count = 0;
+    for (unsigned int i = 0; i < arraySize; i++) {
+        if (videoArray[i]->getGenero() == searchGenero) {
+			videoArray[i]->printData();
+			count++;
+		}
+    }
+
+	if (count == 0) {
+		return false;
+	}
+
+	return true;
+}
+
+bool Datos::buscarVideosGeneral(float searchCalificacion) {
+	int count = 0;
+    for (unsigned int i = 0; i < arraySize; i++) {
+        if (videoArray[i]->getCalificacion() == searchCalificacion) {
+			videoArray[i]->printData();
+			count++;
+		}
+    }
+
+	if (count == 0) {
+		return false;
+	}
+
+	return true;
+}

@@ -31,12 +31,57 @@ bool Menu::seleccionarOpcion(Datos *newData) {
             }
             std::cout << "Se cargaron los archivos correctamente" << std::endl;
             return true;
+
         case 2:
             newData->displayDatos();
             return true;
-        case 3:
 
-            return true;
+        case 3: {
+            int optGeneroCalificacion;
+
+            std::cout << "Eliga que desea buscar en el catálogo\n1. Genero\n2. Calificacion\nOpcion: ";
+
+            std::cin >> optGeneroCalificacion;
+
+            if (optGeneroCalificacion == 1) {
+                float searchCalificacion;
+            
+                newData->displayDatos();
+
+                std::cout << "Por favor ingrese el genero a buscar" << std::endl;
+                std::cin >> searchCalificacion;
+            
+                if(newData->buscarVideosGeneral(searchCalificacion)) {
+                    return true;
+                } else {
+                    std::cout << "No hubo peliculas con calificacion"<< searchCalificacion << std::endl;
+                    return true;
+                }
+            } else if (optGeneroCalificacion == 2) {
+                float searchCalificacion;
+            
+                newData->displayDatos();
+
+                std::cout << "Por favor ingrese la calificacion a buscar del 1-5" << std::endl;
+                std::cin >> searchCalificacion;
+            
+                if (searchCalificacion < 1 || searchCalificacion > 5) {
+                    std::cout << "La calificacion debe estar entre 1 y 5" << std::endl;
+                    return true;
+                } else {
+                    if(newData->buscarVideosGeneral(searchCalificacion)) {
+                        return true;
+                    } else {
+                        std::cout << "No hubo videos con calificacion"<< searchCalificacion << std::endl;
+                            return true;
+                    }
+                } 
+            } else {
+                std::cout << "Opción invalida\n";
+                return true;
+            }
+        }
+
         case 4: {
             string searchId;
             float searchCalificacion;
@@ -63,7 +108,6 @@ bool Menu::seleccionarOpcion(Datos *newData) {
             }    
         }
 
-            return true;
         case 5: {
             float searchCalificacion;
             
@@ -83,9 +127,8 @@ bool Menu::seleccionarOpcion(Datos *newData) {
                         return true;
                 }
             } 
-
         }
-            return true;
+        
         case 6: {
             int calificacion;
             std::string idEpisodio;
@@ -113,8 +156,10 @@ bool Menu::seleccionarOpcion(Datos *newData) {
                 }
             }      
             return true;
-            }
+        }
+
         case 0:
+            std::cout << "Saliendo del programa...\n";
             return false;
         default:
             std::cout << "Opcion invalida. Intente de nuevo." << std::endl;
