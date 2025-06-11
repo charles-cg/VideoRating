@@ -223,7 +223,7 @@ bool Datos::cargarDatos() {
 	return true;
 }
 
-bool Datos::calificarEpisodio(string id, int calificacion) {
+bool Datos::calificarVideo(string id, int calificacion) {
 	for (unsigned int i = 0; i < arraySize; i++) {
 		if(videoArray[i]->getId() == id) {
 			videoArray[i]->setCalificacion(calificacion);

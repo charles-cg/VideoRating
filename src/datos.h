@@ -18,7 +18,7 @@ public:
 
     void displayDatos();
 
-    bool calificarEpisodio(string id, int calificacion);
+    bool calificarVideo(string id, int calificacion);
 private:
     Video **videoArray;
 

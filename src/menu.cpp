@@ -43,36 +43,35 @@ bool Menu::seleccionarOpcion(Datos *newData) {
         case 5:
 
             return true;
-        case 6:
+        case 6: {
             int calificacion;
-            int eleccion;
-            string idEpisodio;
-            std::cout << "¿Que quiere calificar?\n" << std::endl;
-            std::cout << "1. Serie\n2. Pelicula\n";
-            std::cin >> eleccion;
-            if(eleccion == 1) {
-                newData->displayDatos();
+            std::string idEpisodio;
+            
+            newData->displayDatos();
 
-                std::cout << "Ingrese el ID del video a calificar: " << std::endl;
-                std::cin >> idEpisodio;
+            std::cout << "\nIngrese el ID del video a calificar: " << std::endl;
+            std::cin >> idEpisodio;
 
-                std::cout << "Por favor ingrese su calificación del 1-5" << std::endl;
-                std::cin >> calificacion;
 
-                if (calificacion < 1 || calificacion > 5) {
-                    std::cout << "La calificación debe estar enyre 1 y 5" << std::endl;
+            std::cout << "Por favor ingrese su calificación del 1-5" << std::endl;
+            std::cin >> calificacion;
+            
+
+            if (calificacion < 1 || calificacion > 5) {
+                std::cout << "La calificación debe estar enyre 1 y 5" << std::endl;
+                return true;
+            } else {
+                if(newData->calificarVideo(idEpisodio, calificacion)) {
+                    std::cout << "Se asignó la calificación" << std::endl;
+                    return true;
                 } else {
-                    if(newData->calificarEpisodio(idEpisodio, calificacion)) {
-                        std::cout << "Se asignó la calificación" << std::endl;
-                    } else {
                         std::cout << "No se pudo asignar la calificacion"<< std::endl;
-                    }
+                        return true;
                 }
-            }
-
+            }      
             return true;
+            }
         case 0:
-
             return false;
         default:
             std::cout << "Opcion invalida. Intente de nuevo." << std::endl;
