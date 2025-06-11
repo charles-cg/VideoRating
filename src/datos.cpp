@@ -223,6 +223,16 @@ bool Datos::cargarDatos() {
 	return true;
 }
 
+bool Datos::calificarEpisodio(string id, int calificacion) {
+	for (unsigned int i = 0; i < arraySize; i++) {
+		if(videoArray[i]->getId() == id) {
+			videoArray[i]->setCalificacion(calificacion);
+			return true;
+		}
+	}
+	return false;
+}
+
 //metodos para el menu
 void Datos::displayDatos() {
     for (unsigned int i = 0; i < arraySize; i++) {

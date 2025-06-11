@@ -17,6 +17,8 @@ public:
     bool cargarDatos();
 
     void displayDatos();
+
+    bool calificarEpisodio(string id, int calificacion);
 private:
     Video **videoArray;
 
