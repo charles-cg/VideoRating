@@ -10,16 +10,18 @@ using namespace std;
 
 //Constructor
 Datos::Datos() {
-	Video *videoArray = nullptr;
+	videoArray = nullptr;
 }
 
 //Destructor
 Datos::~Datos() {
-	if (!videoArray) {
+	if (videoArray) {
 		delete [] videoArray;
 		videoArray = nullptr;
 	}
 }
+
+//get methods
 
 //metodo para contar lineas
 int Datos::countLines(string fileName) {
@@ -49,7 +51,7 @@ int Datos::countLines(string fileName) {
     return(lineCount);
 }
 
-
+//metodos para la carga de datos
 bool Datos::loadPeliculaCSV(string filename) {
 	ifstream file(filename);
 	string line;
@@ -199,6 +201,7 @@ bool Datos::cargarDatos() {
 	arraySize = numeroPeliculas + numeroEpisodios;
 
 	videoArray = new(nothrow) Video *[arraySize];
+
 	if(videoArray == nullptr) {
 		cerr << "No hubo memoria para el arreglo creado con datos de " << PELICULA_CSV << "y " << EPISODIO_CSV << "\n";
 		return false;
@@ -218,4 +221,11 @@ bool Datos::cargarDatos() {
 		return false;
 	}
 	return true;
+}
+
+//metodos para el menu
+void Datos::displayDatos() {
+    for (unsigned int i = 0; i < arraySize; i++) {
+        videoArray[i]->printData();
+    }
 }

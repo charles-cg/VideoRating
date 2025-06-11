@@ -22,10 +22,10 @@ void Episodio::setNumeroTemporada(int newNumeroTemporada) {
 void Episodio::printData() {
     cout << "Episodio: ";
 	cout << "ID: " << getId();
-	cout << "Nombre: " << getNombre();
-	cout << "Duracion: " << getDuracion();
-	cout << "Genero: " << getGenero();
-	cout << "Titulo: " << nombreEpisodio;
-	cout << "Temporada: " << numeroTemporada; 
-	cout << "Calificacion: " << getCalificacion() << endl;  
+	cout << " Nombre: " << getNombre();
+	cout << " Duracion: " << getDuracion();
+	cout << " Genero: " << getGenero();
+	cout << " Titulo: " << nombreEpisodio;
+	cout << " Temporada: " << numeroTemporada; 
+	cout << " Calificacion: " << getCalificacion() << endl;  
 }

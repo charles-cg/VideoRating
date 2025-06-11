@@ -8,8 +8,15 @@ int main() {
     Datos data;
     Menu menuMain;
 
-    menuMain.generarMenu();
-    menuMain.seleccionarOpcion(data);
+    Datos *dataPtr = &data;
+
+
+    bool flagMenu = true;
+
+    while (flagMenu) {
+        menuMain.generarMenu();
+        flagMenu = menuMain.seleccionarOpcion(dataPtr);
+    }
 
     return 0;
 }

@@ -7,6 +7,6 @@ private:
 public:
     Menu();
     void generarMenu();
-    bool seleccionarOpcion(Datos newData);
+    bool seleccionarOpcion(Datos *newData);
     ~Menu();
 };
