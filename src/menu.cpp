@@ -1,6 +1,7 @@
 #include <iostream>
 #include "menu.h"
 
+
 Menu::Menu() {
 
 }
@@ -18,13 +19,16 @@ void Menu::generarMenu() {
     std::cout << "0. Salir\n";
 }
 
-bool Menu::seleccionarOpcion() {
+bool Menu::seleccionarOpcion(Datos newData) {
     std::cout << "Elige una opcion: "; //checar si es mejor input en el main o en la función
     std::cin >> opcion;
 
     switch (opcion) {
         case 1:
-
+            if (!newData.cargarDatos()) {
+                std::cout << "Ocurrio un error al cargar los datos\nCerrando el programa..." << std::endl;
+                return false;
+            }
             return true;
         case 2:
 

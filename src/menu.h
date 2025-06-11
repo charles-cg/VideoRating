@@ -1,4 +1,5 @@
 #pragma once
+#include "datos.h"
 
 class Menu {
 private:
@@ -6,6 +7,6 @@ private:
 public:
     Menu();
     void generarMenu();
-    bool seleccionarOpcion();
+    bool seleccionarOpcion(Datos newData);
     ~Menu();
 };

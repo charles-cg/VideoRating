@@ -3,68 +3,54 @@
 #include <fstream>
 #include <sstream>
 
+#define PELICULA_CSV "movies.csv"
+#define EPISODIO_CSV "series.csv"
+
 using namespace std;
 
+//Constructor
 Datos::Datos() {
-	episodioArray = nullptr;
-	peliculaArray = nullptr;
-	dataSizeEpisodio = 0;
-	dataSizePelicula = 0;
+	Video *videoArray = nullptr;
 }
 
-Episodio *Datos::getEpisodioArray() {
-	return episodioArray;
+//Destructor
+Datos::~Datos() {
+	if (!videoArray) {
+		delete [] videoArray;
+		videoArray = nullptr;
+	}
 }
 
-Pelicula *Datos::getPeliculaArray() {
-	return peliculaArray;
+//metodo para contar lineas
+int Datos::countLines(string fileName) {
+    ifstream    file(fileName);
+    int         lineCount = 0;
+    string      line;
+
+    // Contar la cantidad de líneas en el archivo csv
+    if (!file.is_open()) {
+        cerr << "Error al abrir el archivo: " << fileName << endl;
+        return -1;
+    }
+
+    // skip header
+    if(!getline(file, line)) {
+        cerr << "El archivo no tiene header" << endl;
+        file.close();
+        return -1;
+    }
+
+    // Contar lineas 
+    while(getline(file, line)) {
+        lineCount++;    
+    }
+
+    file.close();
+    return(lineCount);
 }
 
-bool Datos::revisionErroresPelicula(string filename) {
-	dataSizePelicula = readLines(filename);
-	if(dataSizePelicula == -1) {
-		cerr << "No se pudo cargar el data set desde " << filename << "\n";
-		return 0;
-	}
 
-	cout << "El archivo \"" << filename << "\" tiene: " << dataSizePelicula << " entradas\n";
-	peliculaArray = new(nothrow) Pelicula [dataSizePelicula];
-	if(peliculaArray == nullptr) {
-		cerr << "No hubo memoria para el arreglo creado con datos de " << filename << "\n";
-		return 0;
-	}
-
-	if(!loadPeliculaCSV(filename, dataSizePelicula)) {
-		cerr << "Error al cargar el data set de " << filename << "\n";
-		delete [] peliculaArray;
-		return 0;
-	}
-	return 1;
-}
-
-bool Datos::revisionErroresEpisodio(string filename) {
-	dataSizeEpisodio = readLines(filename);
-	if(dataSizeEpisodio == -1) {
-		cerr << "No se pudo cargar el data set desde " << filename << "\n";
-		return 0;
-	}
-
-	cout << "El archivo \"" << filename << "\" tiene: " << dataSizeEpisodio << " entradas\n";
-	episodioArray = new(nothrow) Episodio [dataSizeEpisodio];
-	if(peliculaArray == nullptr) {
-		cerr << "No hubo memoria para el arreglo creado con datos de " << filename << "\n";
-		return 0;
-	}
-
-	if(!loadPeliculaCSV(filename, dataSizeEpisodio)) {
-		cerr << "Error al cargar el data set de " << filename << "\n";
-		delete [] episodioArray;
-		return 0;
-	}
-	return 1;
-}
-
-bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
+bool Datos::loadPeliculaCSV(string filename) {
 	ifstream file(filename);
 	string line;
 	unsigned int size = 0;
@@ -80,7 +66,7 @@ bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
 	cout << "Archivo abierto"<<endl;
 	//Aquí preguntar a Artemio si copiamos parte por parte el código
 	while (getline (file, line)) {
-		Pelicula newPeli;
+		Pelicula *newPeli = new Pelicula();
 		stringstream ss(line);
 		string cell;
 		int campo = 0, errores = 0;
@@ -90,19 +76,17 @@ bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
 				errores++;
 			switch (campo){
 				case 0:
-					newPeli.setId(cell);
+					newPeli->setId(cell);
 					break;
 				case 1:
-					newPeli.setNombre(cell);
+					newPeli->setNombre(cell);
 					break;
 				case 2:
-					newPeli.setCalificacion(stod(cell));
-					break;
+					newPeli->setDuracion(stoi(cell));
+					break;					
 				case 3:
-					newPeli.setGenero(cell);
+					newPeli->setGenero(cell);
 					break;
-				case 4:
-					newPeli.setDuracion(stod(cell));
 				default:
 					errores++;
 					break;
@@ -115,7 +99,7 @@ bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
 			return false;
 		}
 		if(size < arraySize) {
-			peliculaArray[size] = newPeli;
+			videoArray[size] = newPeli;
 			size++;
 		}
 		else {
@@ -128,10 +112,10 @@ bool Datos::loadPeliculaCSV(string filename, unsigned int arraySize) {
 	return true;
 }
 
-bool Datos::loadVideosCSV(string filename, unsigned int arraySize) {
+bool Datos::loadEpisodioCSV(string filename) {
 	ifstream file(filename);
 	string line;
-	unsigned int size = 0;
+	unsigned int size = numeroPeliculas;
 
 	if (!file.is_open()) {
 		cout << "No se pudo abrir el archivo: " << filename <<endl;
@@ -144,7 +128,7 @@ bool Datos::loadVideosCSV(string filename, unsigned int arraySize) {
 	cout << "Archivo abierto"<<endl;
 	//Aquí preguntar a Artemio si copiamos parte por parte el código
 	while (getline (file, line)) {
-		Video newVid;
+		Episodio *newEpi = new Episodio();
 		stringstream ss(line);
 		string cell;
 		int campo = 0, errores = 0;
@@ -154,89 +138,23 @@ bool Datos::loadVideosCSV(string filename, unsigned int arraySize) {
 				errores++;
 			switch (campo){
 				case 0:
-					newVid.setId(cell);
+					newEpi->setId(cell);
 					break;
 				case 1:
-					newVid.setNombre(cell);
+					newEpi->setNombre(cell);
 					break;
 				case 2:
-					newVid.setCalificacion(stod(cell));
-					break;
+					newEpi->setDuracion(stoi(cell));
+					break;					
 				case 3:
-					newVid.setGenero(cell);
+					newEpi->setGenero(cell);
 					break;
 				case 4:
-					newVid.setDuracion(stod(cell));
-				default:
-					errores++;
-					break;
-			}
-			campo++;
-		}
-		if (errores || campo != VIDEO_ATTRIB_SIZE){
-			cout << "Error en la linea: " << line << endl;
-			file.close();
-			return false;
-		}
-		if(size < arraySize) {
-			videoArray[size] = newVid;
-			size++;
-		}
-		else {
-			cout << "Error, el arreglo es muy pequeño" << endl;
-			file.close();
-			return false;
-		}
-	}
-	file.close();
-	return true;
-}
-
-bool Datos::loadEpisodioCSV(string filename, unsigned int arraySize) {
-	ifstream file(filename);
-	string line;
-	unsigned int size = 0;
-
-	if (!file.is_open()) {
-		cout << "No se pudo abrir el archivo: " << filename <<endl;
-		return false;
-	}
-	if (!getline (file, line)) {
-		cout << "El archivo no tiene header" << endl;
-		return false;
-	}
-	cout << "Archivo abierto"<<endl;
-	//Aquí preguntar a Artemio si copiamos parte por parte el código
-	while (getline (file, line)) {
-		Episodio newEpi;
-		stringstream ss(line);
-		string cell;
-		int campo = 0, errores = 0;
-
-		while (getline(ss, cell, ',')) {
-			if (!cell.length())
-				errores++;
-			switch (campo){
-				case 0:
-					newEpi.setId(cell);
-					break;
-				case 1:
-					newEpi.setNombre(cell);
-					break;
-				case 2:
-					newEpi.setCalificacion(stod(cell));
-					break;
-				case 3:
-					newEpi.setGenero(cell);
-					break;
-				case 4:
-					newEpi.setDuracion(stod(cell));
+					newEpi->setNombreEpisodio(cell);
 					break;
 				case 5:
-					newEpi.setNumeroEpisodio(cell);
+					newEpi->setNumeroTemporada(stoi(cell));
 					break;
-				case 6:
-					newEpi.setNumeroTemporada(stod(cell));
 				default:
 					errores++;
 					break;
@@ -249,7 +167,7 @@ bool Datos::loadEpisodioCSV(string filename, unsigned int arraySize) {
 			return false;
 		}
 		if(size < arraySize) {
-			episodioArray[size] = newEpi;
+			videoArray[size] = newEpi;
 			size++;
 		}
 		else {
@@ -262,20 +180,42 @@ bool Datos::loadEpisodioCSV(string filename, unsigned int arraySize) {
 	return true;
 }
 
-int Datos::readLines(string filename) {
-	ifstream file(filename);
-	int lineCount = 0;
-	string line;
+bool Datos::cargarDatos() {
+	numeroPeliculas = countLines(PELICULA_CSV);
+	if(numeroPeliculas == -1) {
+		cerr << "No se pudo cargar el data set desde " << PELICULA_CSV << "\n";
+		return false;
+	}
+	
+	numeroEpisodios = countLines(EPISODIO_CSV);
+	if(numeroEpisodios == -1) {
+		cerr << "No se pudo cargar el data set desde " << EPISODIO_CSV << "\n";
+		return false;
+	}	
 
-	if (!file.is_open()) {
-		cout << "No se pudo abrir el archivo: " << filename <<endl;
-		return 0;
+	cout << "El archivo \"" << PELICULA_CSV << "\" tiene: " << numeroPeliculas << " peliculas\n";
+	cout << "El archivo \"" << EPISODIO_CSV << "\" tiene: " << numeroEpisodios << " episodio\n";
+
+	arraySize = numeroPeliculas + numeroEpisodios;
+
+	videoArray = new(nothrow) Video *[arraySize];
+	if(videoArray == nullptr) {
+		cerr << "No hubo memoria para el arreglo creado con datos de " << PELICULA_CSV << "y " << EPISODIO_CSV << "\n";
+		return false;
 	}
-	while (!getline (file, line)) {
-		cout << "EL arhcivo no tiene header" << endl;
-		file.close();
-		return 0;
+
+	if(!loadPeliculaCSV(PELICULA_CSV)) {
+		cerr << "Error al cargar el data set de " << PELICULA_CSV << "\n";
+		delete [] videoArray;
+		videoArray = nullptr;
+		return false;
 	}
-	file.close();
-	return lineCount;
+
+	if(!loadEpisodioCSV(EPISODIO_CSV)) {
+		cerr << "Error al cargar el data set de " << EPISODIO_CSV << "\n";
+		delete [] videoArray;
+		videoArray = nullptr;
+		return false;
+	}
+	return true;
 }

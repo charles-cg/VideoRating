@@ -8,7 +8,7 @@ class Video {
 private:
     string id;
     string nombre;
-    float duracion;
+    int duracion;
     string genero;
     float calificacion;
     int sumaCalificacion;
@@ -19,13 +19,13 @@ public:
 
     void setId(string newId);
     void setNombre(string newNombre);
-    void setDuracion(float newDuracion);
+    void setDuracion(int newDuracion);
     void setGenero(string newGenero);
     void setCalificacion(float newCalificacion);
 
     string getId();
     string getNombre();
-    float getDuracion();
+    int getDuracion();
     string getGenero();
     float getCalificacion();
     

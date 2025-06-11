@@ -11,7 +11,7 @@ Episodio::~Episodio() {
 
 }
 
-void Episodio::setNumeroEpisodio(string newNombreEpisodio) {
+void Episodio::setNombreEpisodio(string newNombreEpisodio) {
     nombreEpisodio = newNombreEpisodio;
 }
 

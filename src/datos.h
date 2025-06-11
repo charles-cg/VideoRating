@@ -7,18 +7,18 @@ class Datos {
 public:
     Datos();
     ~Datos();
-    bool loadPeliculaCSV(std::string filename, unsigned int arraySize);
-    int readLines(std::string filename);
-    bool loadEpisodioCSV(std::string filename, unsigned int arraySize);
-    bool loadVideosCSV(std::string filename, unsigned int arraySize);
-    bool revisionErroresPelicula(string filename);
-    bool revisionErroresEpisodio(string filename);
-    Episodio *getEpisodioArray();
-    Pelicula *getPeliculaArray();
+
+    bool loadPeliculaCSV(std::string filename);
+    bool loadEpisodioCSV(std::string filename);
+
+    int countLines(std::string filename);
+
+    bool cargarDatos();
 private:
-    Episodio *episodioArray;
-    Pelicula *peliculaArray;
-    Video *videoArray;
-    int dataSizePelicula;
-    int dataSizeEpisodio;
+    Video **videoArray;
+
+
+    unsigned int arraySize;
+    unsigned int numeroPeliculas;
+    unsigned int numeroEpisodios; 
 };

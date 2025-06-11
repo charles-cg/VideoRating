@@ -11,7 +11,7 @@ public:
     Episodio();
     ~Episodio();
     
-    void setNumeroEpisodio(string newNombreEpisodio);
+    void setNombreEpisodio(string newNombreEpisodio);
     void setNumeroTemporada(int newNumeroTemporada);
     void printData() override;
 };

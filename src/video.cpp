@@ -23,7 +23,7 @@ void Video::setNombre(string newName) {
     nombre = newName;
 }
 
-void Video::setDuracion(float newDuracion) {
+void Video::setDuracion(int newDuracion) {
     duracion = newDuracion;
 }
 
@@ -45,7 +45,7 @@ string Video::getId() {
 string Video::getNombre() {
     return nombre;
 }
-float Video::getDuracion() {
+int Video::getDuracion() {
     return duracion;
 }
 string Video::getGenero() {
