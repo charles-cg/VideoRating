@@ -207,6 +207,10 @@ bool Datos::cargarDatos() {
 		return false;
 	}
 
+    for (unsigned int i = 0; i < arraySize; i++) {
+        videoArray[i] = nullptr;
+    }		
+
 	if(!loadPeliculaCSV(PELICULA_CSV)) {
 		cerr << "Error al cargar el data set de " << PELICULA_CSV << "\n";
 		delete [] videoArray;
@@ -238,4 +242,22 @@ void Datos::displayDatos() {
     for (unsigned int i = 0; i < arraySize; i++) {
         videoArray[i]->printData();
     }
+}
+
+bool Datos::buscarEpisodios(string searchId, float searchCalificacion) {
+	int count = 0;
+    for (unsigned int i = 0; i < arraySize; i++) {
+        if (videoArray[i] && typeid(*videoArray[i]) == typeid(Episodio)) {
+            if (videoArray[i]->getId() == searchId && videoArray[i]->getCalificacion() == searchCalificacion) {
+				videoArray[i]->printData();
+				count++;
+			}
+        }
+    }
+
+	if (count == 0) {
+		return false;
+	}
+
+	return true;
 }

@@ -19,6 +19,8 @@ public:
     void displayDatos();
 
     bool calificarVideo(string id, int calificacion);
+    
+    bool buscarEpisodios(string searchId, float searchCalificacion);
 private:
     Video **videoArray;
 

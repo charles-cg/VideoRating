@@ -37,7 +37,31 @@ bool Menu::seleccionarOpcion(Datos *newData) {
         case 3:
 
             return true;
-        case 4:
+        case 4: {
+            string searchId;
+            float searchCalificacion;
+            
+            newData->displayDatos();
+
+            std::cout << "\nIngrese el ID de la serie a buscar: " << std::endl;
+            std::cin >> searchId;
+
+
+            std::cout << "Por favor ingrese la calificacion a buscar del 1-5" << std::endl;
+            std::cin >> searchCalificacion;
+            
+            if (searchCalificacion < 1 || searchCalificacion > 5) {
+                std::cout << "La calificacion debe estar entre 1 y 5" << std::endl;
+                return true;
+            } else {
+                if(newData->buscarEpisodios(searchId, searchCalificacion)) {
+                    return true;
+                } else {
+                        std::cout << "No hubo episodios de la serie "<< searchId <<" con calificacion "<< searchCalificacion << std::endl;
+                        return true;
+                }
+            }    
+        }
 
             return true;
         case 5:
@@ -58,7 +82,7 @@ bool Menu::seleccionarOpcion(Datos *newData) {
             
 
             if (calificacion < 1 || calificacion > 5) {
-                std::cout << "La calificación debe estar enyre 1 y 5" << std::endl;
+                std::cout << "La calificación debe estar entre 1 y 5" << std::endl;
                 return true;
             } else {
                 if(newData->calificarVideo(idEpisodio, calificacion)) {
