@@ -8,5 +8,5 @@ public:
     Pelicula();
     ~Pelicula();
 
-    void printData();
+    void printData() override;
 };
