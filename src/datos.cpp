@@ -16,6 +16,12 @@ Datos::Datos() {
 //Destructor
 Datos::~Datos() {
 	if (videoArray) {
+		for (unsigned int i = 0; i < arraySize; i++) {
+			if (videoArray[i]) {
+				delete videoArray[i];
+				videoArray[i] = nullptr;
+			}
+		}
 		delete [] videoArray;
 		videoArray = nullptr;
 	}
