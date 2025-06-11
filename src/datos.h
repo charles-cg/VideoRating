@@ -18,6 +18,8 @@ public:
 
     void displayDatos();
 
+    void displayDatos(int calificación);
+
     bool calificarEpisodio(string id, int calificacion);
 private:
     Video **videoArray;

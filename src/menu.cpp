@@ -34,13 +34,52 @@ bool Menu::seleccionarOpcion(Datos *newData) {
         case 2:
             newData->displayDatos();
             return true;
-        case 3:
+        case 3: {
+            float searchCalificacion;
+            int searchId;
 
+            newData->displayDatos();
+            std::cout << "\nIngrese el ID de la pelicula a buscar: " << std::endl;
+            std::cin >> searchId;
+            std::cout << "Por favor ingrese la calificacion a buscar del 1-5" << std::endl;
+            std::cin >> searchCalificacion;
+            if (searchCalificacion < 1 || searchCalificacion > 5) {
+                std::cout << "La calificacion debe estar entre 1 y 5" << std::endl;
+                return true;
+            } else {
+                if(newData->buscarPeliculas(searchId, searchCalificacion)) {
+                    return true;
+                } else {
+                    std::cout << "No hubo peliculas con calificacion "<< searchCalificacion << std::endl;
+                    return true;
+                }
+                return true;
+            }
             return true;
+        }
         case 4:
 
             return true;
-        case 5:
+        case 5: {
+            int cali;
+            std::cout << "Por favor, ingrese una opcion: " << std::endl;
+            std::cin >> cali;
+
+            switch (cali) {
+                case 1:
+                    newData->displayDatos(1);
+                case 2:
+                    newData->displayDatos(2);
+                case 3:
+                    newData->displayDatos(3);
+                case 4:
+                    newData->displayDatos(4);
+                case 5:
+                    newData->displayDatos(5);
+                default:
+                    std::cout << "Opción invalida, por favor intente de nuevo" << std::endl;
+            }
+        }
 
             return true;
         case 6:
